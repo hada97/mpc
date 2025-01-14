@@ -21,17 +21,24 @@ body {
     padding: 30px;
     box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
     display: flex;
+    justify-content: space-between; /* Divida a largura entre a parte esquerda e direita */
+    width: 1200px; /* Aumente a largura do MPC */
+}
+
+/* Parte esquerda (Tela e Pads) */
+.left-section {
+    display: flex;
     flex-direction: column;
     align-items: center;
-    width: 980px; /* Largura total para acomodar os pads e a tela */
+    width: 75%; /* Ocupa 75% da largura */
 }
 
 /* Tela de exibição (display) acima dos pads */
 .screen {
-    width: 630px; /* Largura igual a uma fileira de pads */
+    width: 630px;
     height: 150px;
-    background-color: #b6b6b6;
-    color: white;
+    background-color: #f0f0f0;
+    color: rgb(0, 0, 0);
     display: flex;
     justify-content: center;
     align-items: center;
@@ -53,8 +60,8 @@ body {
 /* Grid de Pads */
 .pads-container {
     display: grid;
-    grid-template-columns: repeat(4, 150px); /* 4 pads por linha */
-    grid-template-rows: repeat(4, 150px); /* 4 linhas de pads */
+    grid-template-columns: repeat(4, 150px);
+    grid-template-rows: repeat(4, 150px);
     gap: 10px;
 }
 
@@ -74,4 +81,86 @@ body {
 .pad:hover {
     background-color: #666;
     transform: scale(1.05);
+}
+
+/* Parte direita (Botões e Controles) */
+.right-section {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    width: 25%; /* Ocupa 25% da largura */
+}
+
+/* Div de botões de controle */
+.button-control {
+    width: 100%;                  /* A div ocupa toda a largura disponível */
+    height: 150px;                /* Altura da div */
+    display: grid;                /* Usando grid para posicionar os botões */
+    grid-template-columns: 1fr 1fr; /* Dividindo a largura em 2 colunas iguais */
+    grid-template-rows: 1fr 1fr;    /* Dividindo a altura em 2 linhas iguais */
+    gap: 20px;                    /* Espaço entre os botões (dentro da grade) */
+    padding: 10px;                /* Espaço entre a borda da div e os botões */
+    box-sizing: border-box;       /* Inclui o padding na largura e altura total da div */
+}
+
+.range-control {
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 20px;
+    height: 630px;
+}
+
+/* Estilo dos botões de controle */
+.control-btn {
+    background-color: #444;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    font-size: 16px;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.control-btn:hover {
+    background-color: #666;
+}
+
+
+/* Estilo básico do range */
+input[type="range"] {
+    width: 100%;               /* Faz o range ocupar toda a largura disponível */
+    height: 10px;              /* Define a altura da linha do range */
+    background: #ddd;         /* Cor do fundo da linha */
+    border-radius: 5px;       /* Bordas arredondadas para a linha */
+    -webkit-appearance: none; /* Remover estilo padrão do input range */
+    appearance: none;         /* Remover estilo padrão do input range */
+}
+
+/* Estilo da linha de rastreamento */
+input[type="range"]::-webkit-slider-runnable-track {
+    background: #333;         /* Cor da linha do range */
+    height: 5px;              /* Altura da linha */
+    border-radius: 5px;       /* Bordas arredondadas para a linha */
+}
+
+/* Estilo do thumb (quadrado) */
+input[type="range"]::-webkit-slider-thumb {
+    -webkit-appearance: none; /* Remover estilo padrão do thumb */
+    appearance: none;         /* Remover estilo padrão do thumb */
+    width: 30px;              /* Largura do thumb (aumentado) */
+    height: 30px;             /* Altura do thumb (aumentado) */
+    background: rgb(173, 173, 173); /* Cor do thumb */
+    border-radius: 5px;       /* Bordas arredondadas para o thumb */
+    cursor: pointer;         /* Mostrar cursor de pointer ao passar por cima */
+    margin-top: -12px;        /* Para centralizar verticalmente o thumb */
+}
+
+/* Focar no range remove a borda padrão */
+input[type="range"]:focus {
+    outline: none;
 }

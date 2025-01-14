@@ -9,30 +9,52 @@
 <body>
     <!-- Container principal do MPC -->
     <div class="mpc-body">
-        <!-- Tela de exibição (display) -->
-        <div class="screen">
-            <span id="screen-text">Exibição de Som</span>
-        </div>
         
-        <!-- Container dos Pads -->
-        <div class="main-container">
-            <div class="pads-container">
-                <button class="pad" id="pad1">Pad 1</button>
-                <button class="pad" id="pad2">Pad 2</button>
-                <button class="pad" id="pad3">Pad 3</button>
-                <button class="pad" id="pad4">Pad 4</button>
-                <button class="pad" id="pad5">Pad 5</button>
-                <button class="pad" id="pad6">Pad 6</button>
-                <button class="pad" id="pad7">Pad 7</button>
-                <button class="pad" id="pad8">Pad 8</button>
-                <button class="pad" id="pad9">Pad 9</button>
-                <button class="pad" id="pad10">Pad 10</button>
-                <button class="pad" id="pad11">Pad 11</button>
-                <button class="pad" id="pad12">Pad 12</button>
-                <button class="pad" id="pad13">Pad 13</button>
-                <button class="pad" id="pad14">Pad 14</button>
-                <button class="pad" id="pad15">Pad 15</button>
-                <button class="pad" id="pad16">Pad 16</button>
+        <!-- Div para a parte esquerda (Tela e Pads) -->
+        <div class="left-section">
+            <!-- Tela de exibição (display) -->
+            <div class="screen">
+                <span id="screen-text">Exibição de Som</span>
+            </div>
+
+            <!-- Contêiner dos Pads -->
+            <div class="main-container">
+                <div class="pads-container">
+                    <button class="pad" id="pad1">Pad 1</button>
+                    <button class="pad" id="pad2">Pad 2</button>
+                    <button class="pad" id="pad3">Pad 3</button>
+                    <button class="pad" id="pad4">Pad 4</button>
+                    <button class="pad" id="pad5">Pad 5</button>
+                    <button class="pad" id="pad6">Pad 6</button>
+                    <button class="pad" id="pad7">Pad 7</button>
+                    <button class="pad" id="pad8">Pad 8</button>
+                    <button class="pad" id="pad9">Pad 9</button>
+                    <button class="pad" id="pad10">Pad 10</button>
+                    <button class="pad" id="pad11">Pad 11</button>
+                    <button class="pad" id="pad12">Pad 12</button>
+                    <button class="pad" id="pad13">Pad 13</button>
+                    <button class="pad" id="pad14">Pad 14</button>
+                    <button class="pad" id="pad15">Pad 15</button>
+                    <button class="pad" id="pad16">Pad 16</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Div para a parte direita (Botões e Controles) -->
+        <div class="right-section">
+
+            <div class="button-control">
+                <button class="control-btn" id="play">Play</button>
+                <button class="control-btn" id="stop">Stop</button>
+                <button class="control-btn" id="prev">Prev</button>
+                <button class="control-btn" id="next">Next</button>
+            </div>
+            
+            <div class="range-control">
+                <label for="equalizer1">Volume 1:</label>
+                <input type="range" id="equalizer1" name="equalizer1" min="0" max="100" value="50" step="1">
+                
+
             </div>
         </div>
     </div>
