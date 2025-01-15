@@ -12,6 +12,7 @@ body {
     align-items: center;
     height: 100vh;
     background-color: #444;
+ 
 }
 
 /* Corpo do MPC, com fundo vermelho */
@@ -21,7 +22,7 @@ body {
     padding: 30px;
     box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
     display: flex;
-    justify-content: space-between;
+    justify-content: space-between; /* Divida a largura entre a parte esquerda e direita */
     width: 1100px; /* Aumente a largura do MPC */
 }
 
@@ -30,7 +31,7 @@ body {
     display: flex;
     flex-direction: column;
     align-items: center;
-    width: 65%;
+    width: 65%; /* Ocupa 75% da largura */
 }
 
 /* Tela de exibição (display) acima dos pads */
@@ -45,6 +46,11 @@ body {
     font-size: 24px;
     border-radius: 8px;
     margin-bottom: 20px;
+}
+
+/* Texto da tela de exibição */
+#screen-text {
+    text-align: center;
 }
 
 /* Contêiner dos Pads */
@@ -84,22 +90,23 @@ body {
     flex-direction: column;
     align-items: center;
     justify-content: space-between;
-    width: 25%;
+    width: 25%; /* Ocupa 25% da largura */
 }
 
 /* Div de botões de controle */
 .button-control {
-    width: 100%;
-    height: 150px;
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    grid-template-rows: 1fr 1fr;
-    gap: 20px;
-    padding: 10px;
-    box-sizing: border-box;
+    width: 100%;                  /* A div ocupa toda a largura disponível */
+    height: 150px;                /* Altura da div */
+    display: grid;                /* Usando grid para posicionar os botões */
+    grid-template-columns: 1fr 1fr; /* Dividindo a largura em 2 colunas iguais */
+    grid-template-rows: 1fr 1fr;    /* Dividindo a altura em 2 linhas iguais */
+    gap: 20px;                    /* Espaço entre os botões (dentro da grade) */
+    padding: 10px;                /* Espaço entre a borda da div e os botões */
+    box-sizing: border-box;       /* Inclui o padding na largura e altura total da div */
 }
 
 .range-control {
+
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -124,106 +131,37 @@ body {
     background-color: #666;
 }
 
+
+/* Estilo básico do range */
 input[type="range"] {
-    width: 100%;
-    height: 10px;
-    background: #ddd;
-    border-radius: 5px;
-    -webkit-appearance: none;
-    appearance: none;
+    width: 100%;               /* Faz o range ocupar toda a largura disponível */
+    height: 10px;              /* Define a altura da linha do range */
+    background: #ddd;         /* Cor do fundo da linha */
+    border-radius: 5px;       /* Bordas arredondadas para a linha */
+    -webkit-appearance: none; /* Remover estilo padrão do input range */
+    appearance: none;         /* Remover estilo padrão do input range */
 }
 
+/* Estilo da linha de rastreamento */
 input[type="range"]::-webkit-slider-runnable-track {
-    background: #333;
-    height: 5px;
-    border-radius: 5px;
+    background: #333;         /* Cor da linha do range */
+    height: 5px;              /* Altura da linha */
+    border-radius: 5px;       /* Bordas arredondadas para a linha */
 }
 
+/* Estilo do thumb (quadrado) */
 input[type="range"]::-webkit-slider-thumb {
-    -webkit-appearance: none;
-    appearance: none;
-    width: 30px;
-    height: 30px;
-    background: rgb(173, 173, 173);
-    border-radius: 5px;
-    cursor: pointer;
-    margin-top: -12px;
+    -webkit-appearance: none; /* Remover estilo padrão do thumb */
+    appearance: none;         /* Remover estilo padrão do thumb */
+    width: 30px;              /* Largura do thumb (aumentado) */
+    height: 30px;             /* Altura do thumb (aumentado) */
+    background: rgb(173, 173, 173); /* Cor do thumb */
+    border-radius: 5px;       /* Bordas arredondadas para o thumb */
+    cursor: pointer;         /* Mostrar cursor de pointer ao passar por cima */
+    margin-top: -12px;        /* Para centralizar verticalmente o thumb */
 }
 
+/* Focar no range remove a borda padrão */
 input[type="range"]:focus {
     outline: none;
-}
-
-/* Media Query para telas pequenas (celulares e tablets) */
-@media (max-width: 768px) {
-    .mpc-body {
-        flex-direction: column;
-        width: 100%;
-        padding: 15px;
-    }
-
-    /* Ajustando a parte esquerda */
-    .left-section {
-        width: 100%;
-        margin-bottom: 20px;
-    }
-
-    /* Ajustando a tela de exibição */
-    .screen {
-        width: 100%;
-        height: 120px;
-        font-size: 18px;
-    }
-
-    /* Ajustando os pads */
-    .pads-container {
-        grid-template-columns: repeat(2, 150px);
-        grid-template-rows: repeat(8, 150px);
-        gap: 8px;
-    }
-
-    /* Ajustando os botões de controle */
-    .right-section {
-        width: 100%;
-        margin-top: 20px;
-    }
-
-    .button-control {
-        width: 100%;
-        grid-template-columns: 1fr;
-        grid-template-rows: repeat(4, 1fr);
-        height: 200px;
-    }
-
-    .range-control {
-        margin-top: 20px;
-    }
-}
-
-/* Media Query para telas extra pequenas (smartphones) */
-@media (max-width: 480px) {
-    .screen {
-        font-size: 16px;
-        height: 100px;
-    }
-
-    .pads-container {
-        grid-template-columns: repeat(2, 120px);
-        grid-template-rows: repeat(8, 120px);
-        gap: 5px;
-    }
-
-    .pad {
-        width: 120px;
-        height: 120px;
-        font-size: 14px;
-    }
-
-    .button-control {
-        height: 300px;
-    }
-
-    .control-btn {
-        padding: 8px 15px;
-    }
 }
