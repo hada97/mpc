@@ -101,6 +101,10 @@ body {
   transform: scale(1.025);
 }
 
+.pad:active {
+  transform: scale(0.98); 
+}
+
 /* Parte direita (Botões e Controles) */
 .right-section {
   display: flex;
