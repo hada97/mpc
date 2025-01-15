@@ -18,7 +18,18 @@ body {
 /* Para dispositivos com largura máxima de 768px (tablet e celular) */
 @media (max-width: 768px) {
   body {
-    transform: scale(0.3);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh; /* Garante que ocupe a altura total */
+    margin: 0; /* Removendo margens */
+    padding: 0; /* Sem preenchimento extra no body */
+    background-color: #444; /* Fundo transparente para ver o conteúdo */
+    overflow: hidden; /* Impede overflow */
+  }
+
+  .mpc-body {
+    transform: scale(0.39); /* Aplica o scale de 0.3 no main */
   }
 }
 
