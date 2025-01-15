@@ -31,7 +31,7 @@ body {
   box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
   display: flex;
   justify-content: space-between;
-  width: 1050px;
+  width: 1030px;
 }
 
 /* Parte esquerda (Tela e Pads) */
@@ -64,10 +64,6 @@ body {
   color: white;
 }
 
-/* Contêiner dos Pads */
-.main-container {
-  margin-bottom: 10px;
-}
 
 /* Grid de Pads */
 .pads-container {
@@ -92,7 +88,7 @@ body {
 
 .pad:hover {
   background-color: #666;
-  transform: scale(1.05);
+  transform: scale(1.025);
 }
 
 /* Parte direita (Botões e Controles) */
@@ -101,7 +97,7 @@ body {
   flex-direction: column;
   align-items: center;
   justify-content: space-between;
-  width: 30%; /* Ocupa 25% da largura */
+  width: 30%;
 }
 
 /* Div de botões de controle */
@@ -134,6 +130,22 @@ body {
   gap: 20px;
 }
 
+#recorded-audio{
+  background-color: rgb(240, 240, 240);
+  color: #7c7c7c;
+  font-size: 18px;
+  font-weight: bold;
+  text-align: center;
+  padding: 10px;
+  border-radius: 12px;
+  width: 94%;
+  height: 54px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+
 #status {
   background-color: rgb(240, 240, 240);
   color: #7c7c7c;
@@ -141,8 +153,8 @@ body {
   font-weight: bold;
   text-align: center;
   padding: 10px;
-  border-radius: 50px;
-  width: 300px;
+  border-radius: 12px;
+  width: 94%;
   height: 54px;
   display: flex;
   justify-content: center;
@@ -166,7 +178,7 @@ body {
   border: none;
   padding: 10px 20px;
   font-size: 16px;
-  border-radius: 8px;
+  border-radius: 12px;
   cursor: pointer;
   transition: background-color 0.3s;
 }
@@ -179,7 +191,7 @@ body {
   border: none;
   padding: 10px 20px;
   font-size: 16px;
-  border-radius: 8px;
+  border-radius: 12px;
   cursor: pointer;
   transition: background-color 0.3s;
 }
