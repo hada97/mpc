@@ -102,12 +102,16 @@ volumeControl.addEventListener("input", function () {
 });
 
 
+
+// Variáveis de controle para gravação
 let audioContext;
 let recorderNode;
 let isRecording = false;
-let recordedChunks = [];  // Armazenar os pedaços de áudio gravados
+let recordedChunks = []; // Armazenar os pedaços de áudio gravados
+let mediaRecorder;
+let recordedBlob;
 
-// Referências dos botões
+// Referências dos botões de controle
 const recordButton = document.getElementById("record-btn");
 const playButton = document.getElementById("play-btn");
 const pauseButton = document.getElementById("pause-btn");
@@ -115,3 +119,103 @@ const clearButton = document.getElementById("clear-btn");
 const statusDisplay = document.getElementById("status");
 const recordedAudio = document.getElementById("recorded-audio");
 
+// Função para iniciar o AudioContext
+function initAudioContext() {
+  if (!audioContext) {
+    // Cria o AudioContext apenas quando for necessário
+    audioContext = new (window.AudioContext || window.webkitAudioContext)();
+  }
+}
+
+// Função para configurar o `MediaRecorder` com áudio do sistema
+async function startRecording() {
+  initAudioContext(); // Garantir que o AudioContext foi iniciado
+  
+  if (isRecording) return; // Se já estiver gravando, não faça nada
+
+  // Configura o status de gravação
+  statusDisplay.textContent = "Status: Gravando...";
+
+  // Criar um MediaElementAudioSourceNode para cada som que está sendo tocado
+  // Vamos capturar o áudio dos sons dos pads (por exemplo, sound1, sound2, etc.)
+  const sources = [];
+  for (let i = 1; i <= 16; i++) {
+    const soundElement = document.getElementById(`sound${i}`);
+    const source = audioContext.createMediaElementSource(soundElement);
+    sources.push(source);
+  }
+
+  // Criar um `GainNode` para combinar os sons e enviar para o destino
+  const gainNode = audioContext.createGain();
+  sources.forEach(source => source.connect(gainNode));
+  gainNode.connect(audioContext.destination);
+
+  // Criar um MediaStreamAudioDestinationNode para capturar o áudio do sistema
+  const destination = audioContext.createMediaStreamDestination();
+  gainNode.connect(destination);
+
+  // Criar o MediaRecorder com o destino de gravação
+  mediaRecorder = new MediaRecorder(destination.stream);
+
+  // Armazenar os dados gravados
+  mediaRecorder.ondataavailable = function (event) {
+    recordedChunks.push(event.data);
+  };
+
+  // Quando a gravação terminar, gerar um Blob e configurar o áudio para reprodução
+  mediaRecorder.onstop = function () {
+    recordedBlob = new Blob(recordedChunks, { type: "audio/wav" });
+    recordedAudio.src = URL.createObjectURL(recordedBlob);
+    recordedChunks = []; // Limpar os pedaços gravados
+    statusDisplay.textContent = "Status: Gravação concluída";
+  };
+
+  // Iniciar a gravação
+  mediaRecorder.start();
+  isRecording = true;
+}
+
+// Função para parar a gravação
+function stopRecording() {
+  if (!isRecording) return; // Se não estiver gravando, não faça nada
+
+  // Parar o MediaRecorder
+  mediaRecorder.stop();
+  isRecording = false;
+}
+
+// Função para reproduzir a gravação
+function playRecording() {
+  if (!recordedBlob) {
+    statusDisplay.textContent = "Status: Nenhuma gravação encontrada";
+    return;
+  }
+
+  // Reproduz o áudio gravado
+  recordedAudio.play();
+  statusDisplay.textContent = "Status: Reproduzindo gravação...";
+}
+
+// Função para limpar a gravação
+function clearRecording() {
+  recordedChunks = [];
+  recordedAudio.src = ""; // Limpar o áudio gravado
+  statusDisplay.textContent = "Status: Pronto para gravar";
+}
+
+// Adicionar event listeners aos botões
+recordButton.addEventListener("click", function () {
+  initAudioContext(); // Inicializa o AudioContext quando o botão for clicado
+  if (isRecording) {
+    stopRecording();
+  } else {
+    startRecording();
+  }
+});
+
+playButton.addEventListener("click", playRecording);
+pauseButton.addEventListener("click", function () {
+  recordedAudio.pause();
+  statusDisplay.textContent = "Status: Pausado";
+});
+clearButton.addEventListener("click", clearRecording);
