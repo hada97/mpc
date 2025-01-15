@@ -19,7 +19,7 @@ body {
 /* Para dispositivos com largura máxima de 768px (tablet e celular) */
 @media (max-width: 768px) {
   body {
-    transform: scale(0.6); /* Ajuste para 60% da escala */
+    transform: scale(0.4); /* Ajuste para 60% da escala */
     transform-origin: top;
   }
 }
