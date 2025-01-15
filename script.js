@@ -38,7 +38,7 @@ function updatePadSounds(folderIndex) {
     screen.textContent = "";
     
     // Exibe o nome da pasta na tela
-    screen.textContent = `Pasta atual: ${currentFolder.name}`;
+    screen.textContent = `Ritmo: ${currentFolder.name}`;
 }
 
 // Função para ir para a próxima pasta
@@ -82,4 +82,17 @@ corMpcControl.addEventListener("input", function () {
     const color = `rgb(${255 - (corValue * 2.55)}, ${255 - (corValue * 2.55)}, ${255 - (corValue * 2.55)})`;
     const mpcBody = document.querySelector('.mpc-body');
     mpcBody.style.backgroundColor = color;
+});
+
+
+// Controle de volume
+const volumeControl = document.getElementById("volume-control");
+
+// Atualiza o volume de todos os sons ao mesmo tempo
+volumeControl.addEventListener("input", function() {
+    const volume = this.value;  // Valor do controle de volume
+    for (let i = 1; i <= 16; i++) {
+        const sound = document.getElementById(`sound${i}`);
+        sound.volume = volume;  // Ajusta o volume de cada som
+    }
 });
