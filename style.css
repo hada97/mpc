@@ -12,7 +12,18 @@ body {
   align-items: center;
   height: 100vh;
   background-color: #444;
+  transform: scale(0.9); /* Ajuste a escala para 70% */
+  
 }
+
+/* Para dispositivos com largura máxima de 768px (tablet e celular) */
+@media (max-width: 768px) {
+  body {
+    transform: scale(0.6); /* Ajuste para 60% da escala */
+    transform-origin: top;
+  }
+}
+
 
 /* Corpo do MPC, com fundo vermelho */
 .mpc-body {
