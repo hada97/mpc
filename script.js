@@ -102,8 +102,6 @@ volumeControl.addEventListener("input", function () {
 });
 
 
-
-
 let audioContext;
 let recorderNode;
 let isRecording = false;
@@ -117,80 +115,3 @@ const clearButton = document.getElementById("clear-btn");
 const statusDisplay = document.getElementById("status");
 const recordedAudio = document.getElementById("recorded-audio");
 
-// Função para iniciar a gravação
-function startRecording() {
-    // Acessando o microfone
-    navigator.mediaDevices.getUserMedia({ audio: true })
-        .then(stream => {
-            audioContext = new (window.AudioContext || window.webkitAudioContext)();
-
-            // Cria o AudioWorkletNode após carregar o módulo
-            audioContext.audioWorklet.addModule('audio-recorder-processor.js').then(() => {
-                recorderNode = new AudioWorkletNode(audioContext, 'audio-recorder-processor');
-                
-                // Conecta o microfone ao processador de áudio
-                const mediaStreamSource = audioContext.createMediaStreamSource(stream);
-                mediaStreamSource.connect(recorderNode);
-                recorderNode.connect(audioContext.destination);
-
-                // Atualizando o status
-                statusDisplay.textContent = "Status: Gravando...";
-                isRecording = true;
-            });
-        })
-        .catch(err => {
-            console.log("Erro ao acessar o microfone: ", err);
-        });
-}
-
-// Função para parar a gravação e armazenar o áudio
-function stopRecording() {
-    if (recorderNode) {
-        // Obtém os pedaços gravados
-        recordedChunks = recorderNode.processor.getRecordedChunks();
-        
-        // Criando um Blob com os dados gravados
-        const audioBlob = new Blob(recordedChunks, { type: "audio/wav" });
-        const audioUrl = URL.createObjectURL(audioBlob);
-
-        // Definindo a URL da gravação no player de áudio
-        recordedAudio.src = audioUrl;
-
-        // Atualizando o status
-        statusDisplay.textContent = "Status: Gravação finalizada!";
-        isRecording = false;
-    }
-}
-
-// Função para reproduzir a gravação
-function playRecording() {
-    if (recordedAudio.src) {
-        recordedAudio.play();
-    }
-}
-
-// Função para pausar a reprodução
-function pauseRecording() {
-    if (recordedAudio.src) {
-        recordedAudio.pause();
-    }
-}
-
-// Função para limpar a gravação
-function clearRecording() {
-    recordedAudio.src = ""; // Remove o áudio
-    statusDisplay.textContent = "Status: Aguardando gravação...";
-}
-
-// Adicionando os eventos aos botões
-recordButton.addEventListener("click", () => {
-    if (!isRecording) {
-        startRecording();
-    } else {
-        stopRecording();
-    }
-});
-
-playButton.addEventListener("click", playRecording);
-pauseButton.addEventListener("click", pauseRecording);
-clearButton.addEventListener("click", clearRecording);
