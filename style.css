@@ -38,12 +38,12 @@ body {
 .screen {
     width: 630px;
     height: 150px;
-    background-color: #f0f0f0;
+    background-color: #444;
     color: rgb(0, 0, 0);
     display: flex;
     justify-content: center;
     align-items: center;
-    font-size: 24px;
+    font-size: 30px;
     border-radius: 8px;
     margin-bottom: 20px;
 }
@@ -51,6 +51,7 @@ body {
 /* Texto da tela de exibição */
 #screen-text {
     text-align: center;
+    color: white;
 }
 
 /* Contêiner dos Pads */
