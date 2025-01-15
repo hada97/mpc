@@ -12,14 +12,14 @@ body {
   align-items: center;
   height: 100vh;
   background-color: #444;
-  transform: scale(0.9); /* Ajuste a escala para 70% */
+  transform: scale(0.9);
   
 }
 
 /* Para dispositivos com largura máxima de 768px (tablet e celular) */
 @media (max-width: 768px) {
   body {
-    transform: scale(0.4); /* Ajuste para 60% da escala */
+    transform: scale(0.1);
     transform-origin: top;
   }
 }
@@ -32,8 +32,8 @@ body {
   padding: 30px;
   box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
   display: flex;
-  justify-content: space-between; /* Divida a largura entre a parte esquerda e direita */
-  width: 1100px; /* Aumente a largura do MPC */
+  justify-content: space-between;
+  width: 1100px; 
 }
 
 /* Parte esquerda (Tela e Pads) */
@@ -41,7 +41,7 @@ body {
   display: flex;
   flex-direction: column;
   align-items: center;
-  width: 65%; /* Ocupa 75% da largura */
+  width: 65%; 
 }
 
 /* Tela de exibição (display) acima dos pads */
@@ -106,24 +106,24 @@ body {
 
 /* Div de botões de controle */
 .button-control {
-  width: 94%; /* A div ocupa toda a largura disponível */
-  height: 150px; /* Altura da div */
-  display: grid; /* Usando grid para posicionar os botões */
-  grid-template-columns: 1fr 1fr; /* Dividindo a largura em 2 colunas iguais */
-  grid-template-rows: 1fr 1fr; /* Dividindo a altura em 2 linhas iguais */
-  gap: 20px; /* Espaço entre os botões (dentro da grade) */
-  box-sizing: border-box; /* Inclui o padding na largura e altura total da div */
+  width: 94%;
+  height: 150px;
+  display: grid; 
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: 1fr 1fr;
+  gap: 20px; 
+  box-sizing: border-box; 
 }
 
 .recorder {
-  width: 100%; /* A div ocupa toda a largura disponível */
-  height: 200px; /* Altura da div */
+  width: 100%;
+  height: 200px; 
   display: flex;
-  flex-direction: column; /* Usando grid para posicionar os botões */
-  gap: 15px; /* Espaço entre os botões (dentro da grade) */
-  box-sizing: border-box; /* Inclui o padding na largura e altura total da div */
-  justify-content: center; /* Centraliza o conteúdo horizontalmente */
-  align-items: center; /* Centraliza o conteúdo verticalmente */
+  flex-direction: column; 
+  gap: 15px; 
+  box-sizing: border-box;
+  justify-content: center; 
+  align-items: center; 
 }
 
 .button-recorder {
@@ -135,18 +135,18 @@ body {
 }
 
 #status {
-  background-color: rgb(240, 240, 240); /* Fundo branco */
-  color: #7c7c7c; /* Cor do texto cinza escuro */
-  font-size: 18px; /* Tamanho da fonte */
-  font-weight: bold; /* Texto em negrito */
-  text-align: center; /* Alinha o texto horizontalmente */
-  padding: 10px; /* Adiciona espaçamento interno */
-  border-radius: 50px; /* Bordas arredondadas */
-  width: 300px; /* Largura total da div */
+  background-color: rgb(240, 240, 240);
+  color: #7c7c7c;
+  font-size: 18px;
+  font-weight: bold;
+  text-align: center; 
+  padding: 10px; 
+  border-radius: 50px; 
+  width: 300px;
   height: 54px;
-  display: flex; /* Flexbox para centralizar o conteúdo verticalmente */
-  justify-content: center; /* Centraliza o conteúdo horizontalmente */
-  align-items: center; /* Centraliza o conteúdo verticalmente */
+  display: flex; 
+  justify-content: center;
+  align-items: center; 
 }
 
 .range-control {
@@ -194,9 +194,9 @@ body {
 
 /* Estilo básico do range */
 input[type="range"] {
-  width: 94%; /* Faz o range ocupar toda a largura disponível */
-  height: 10px; /* Define a altura da linha do range */
-  background: #ddd; /* Cor do fundo da linha */
+  width: 94%; 
+  height: 10px; 
+  background: #ddd; 
   border-radius: 0px; /* Bordas arredondadas para a linha */
   -webkit-appearance: none; /* Remover estilo padrão do input range */
   appearance: none; /* Remover estilo padrão do input range */
@@ -213,11 +213,11 @@ input[type="range"]::-webkit-slider-runnable-track {
 input[type="range"]::-webkit-slider-thumb {
   -webkit-appearance: none; /* Remover estilo padrão do thumb */
   appearance: none; /* Remover estilo padrão do thumb */
-  width: 30px; /* Largura do thumb (aumentado) */
-  height: 30px; /* Altura do thumb (aumentado) */
-  background: rgb(226, 226, 226); /* Cor do thumb */
-  border-radius: 5px; /* Bordas arredondadas para o thumb */
-  cursor: pointer; /* Mostrar cursor de pointer ao passar por cima */
+  width: 30px;
+  height: 30px;
+  background: rgb(226, 226, 226); 
+  border-radius: 5px; 
+  cursor: pointer;
   margin-top: -12px; /* Para centralizar verticalmente o thumb */
   border: 2px solid rgba(0, 0, 0, 0.3);
 }
@@ -225,4 +225,14 @@ input[type="range"]::-webkit-slider-thumb {
 /* Focar no range remove a borda padrão */
 input[type="range"]:focus {
   outline: none;
+}
+
+/* Estilo para os labels com destaque */
+.label-highlight {
+  font-family: 'Arial', sans-serif; /* Altere para a fonte desejada */
+  font-weight: bold;               /* Negrito */
+  color: #333;                     /* Cor escura para destaque */
+  font-size: 16px;                  /* Ajuste o tamanho da fonte conforme necessário */
+  margin-bottom: 5px;               /* Espaçamento entre o label e o controle */
+  display: block;                  /* Garantir que o label ocupe toda a linha */
 }

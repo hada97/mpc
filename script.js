@@ -16,7 +16,7 @@ const soundPacks = [
     name: "Funk",
     folder: "funk", // nome da pasta no servidor
   },
-  // Adicione mais pastas conforme necessário
+  // Adicione mais pastas aqui
 ];
 
 // Função para atualizar os sons nos pads
@@ -41,14 +41,14 @@ function updatePadSounds(folderIndex) {
 
 // Função para ir para a próxima pasta
 nextButton.addEventListener("click", function () {
-  currentFolderIndex = (currentFolderIndex + 1) % soundPacks.length; // Loop entre as pastas
+  currentFolderIndex = (currentFolderIndex + 1) % soundPacks.length; 
   updatePadSounds(currentFolderIndex);
 });
 
 // Função para ir para a pasta anterior
 prevButton.addEventListener("click", function () {
   currentFolderIndex =
-    (currentFolderIndex - 1 + soundPacks.length) % soundPacks.length; // Loop entre as pastas
+    (currentFolderIndex - 1 + soundPacks.length) % soundPacks.length; 
   updatePadSounds(currentFolderIndex);
 });
 
@@ -64,7 +64,7 @@ for (let i = 1; i <= 16; i++) {
 
 function playSound(soundId) {
   const sound = document.getElementById(soundId);
-  sound.currentTime = 0; // Reseta o áudio para começar do início
+  sound.currentTime = 0;
   sound.play();
 }
 
@@ -94,10 +94,10 @@ const volumeControl = document.getElementById("volume-control");
 
 // Atualiza o volume de todos os sons ao mesmo tempo
 volumeControl.addEventListener("input", function () {
-  const volume = this.value; // Valor do controle de volume
+  const volume = this.value;
   for (let i = 1; i <= 16; i++) {
     const sound = document.getElementById(`sound${i}`);
-    sound.volume = volume; // Ajusta o volume de cada som
+    sound.volume = volume; 
   }
 });
 
@@ -107,7 +107,7 @@ volumeControl.addEventListener("input", function () {
 let audioContext;
 let recorderNode;
 let isRecording = false;
-let recordedChunks = []; // Armazenar os pedaços de áudio gravados
+let recordedChunks = [];
 let mediaRecorder;
 let recordedBlob;
 
@@ -122,22 +122,21 @@ const recordedAudio = document.getElementById("recorded-audio");
 // Função para iniciar o AudioContext
 function initAudioContext() {
   if (!audioContext) {
-    // Cria o AudioContext apenas quando for necessário
     audioContext = new (window.AudioContext || window.webkitAudioContext)();
   }
 }
 
 // Função para configurar o `MediaRecorder` com áudio do sistema
 async function startRecording() {
-  initAudioContext(); // Garantir que o AudioContext foi iniciado
+  initAudioContext(); 
   
-  if (isRecording) return; // Se já estiver gravando, não faça nada
+  if (isRecording) return;
 
   // Configura o status de gravação
-  statusDisplay.textContent = "Status: Gravando...";
+  statusDisplay.textContent = "Gravando";
 
-  // Criar um MediaElementAudioSourceNode para cada som que está sendo tocado
-  // Vamos capturar o áudio dos sons dos pads (por exemplo, sound1, sound2, etc.)
+
+  // Vamos capturar o áudio dos sons dos pads
   const sources = [];
   for (let i = 1; i <= 16; i++) {
     const soundElement = document.getElementById(`sound${i}`);
@@ -167,7 +166,7 @@ async function startRecording() {
     recordedBlob = new Blob(recordedChunks, { type: "audio/wav" });
     recordedAudio.src = URL.createObjectURL(recordedBlob);
     recordedChunks = []; // Limpar os pedaços gravados
-    statusDisplay.textContent = "Status: Gravação concluída";
+    statusDisplay.textContent = "Gravação concluída";
   };
 
   // Iniciar a gravação
@@ -187,25 +186,25 @@ function stopRecording() {
 // Função para reproduzir a gravação
 function playRecording() {
   if (!recordedBlob) {
-    statusDisplay.textContent = "Status: Nenhuma gravação encontrada";
+    statusDisplay.textContent = "Nenhuma gravação encontrada";
     return;
   }
 
   // Reproduz o áudio gravado
   recordedAudio.play();
-  statusDisplay.textContent = "Status: Reproduzindo gravação...";
+  statusDisplay.textContent = "Reproduzindo gravação";
 }
 
 // Função para limpar a gravação
 function clearRecording() {
   recordedChunks = [];
-  recordedAudio.src = ""; // Limpar o áudio gravado
-  statusDisplay.textContent = "Status: Pronto para gravar";
+  recordedAudio.src = "";
+  statusDisplay.textContent = "Pronto para gravar";
 }
 
 // Adicionar event listeners aos botões
 recordButton.addEventListener("click", function () {
-  initAudioContext(); // Inicializa o AudioContext quando o botão for clicado
+  initAudioContext(); // Inicializa o AudioContext no cilck
   if (isRecording) {
     stopRecording();
   } else {
