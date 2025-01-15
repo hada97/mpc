@@ -36,7 +36,7 @@ function updatePadSounds(folderIndex) {
   screen.textContent = "";
 
   // Exibe o nome da pasta na tela
-  screen.textContent = `Ritmo: ${currentFolder.name}`;
+  screen.textContent = `${currentFolder.name}`;
 }
 
 // Função para ir para a próxima pasta
