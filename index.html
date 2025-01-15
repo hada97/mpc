@@ -4,6 +4,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Pad de Som</title>
+    <script src="audio-recorder-processor.js" defer></script>
+    <script src="script.js"></script>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
@@ -44,23 +46,41 @@
         <div class="right-section">
             <!-- Botões de controle -->
             <div class="button-control">
-                <button class="control-btn" id="play">Play</button>
-                <button class="control-btn" id="stop">Stop</button>
+                <button class="control-btn" id="play-btn">Play</button>
+                <button class="control-btn" id="pause-btn">Stop</button>
                 <button class="control-btn" id="prev">Prev</button>
                 <button class="control-btn" id="next">Next</button>
             </div>
+
+            <div class="recorder">
+
+                <div class = "button-recorder">
+                    <button class="recorder-btn" id="record-btn">Gravar</button>
+                    <button class="recorder-btn" id="clear-btn">Apagar</button>
+                </div>
+            
+                <!-- Áudio para reproduzir a gravação -->
+                <audio id="recorded-audio" controls></audio>
+
+                <!-- Elemento para mostrar se está gravando -->
+                <div id="status">Status: Pronto para gravar</div>
+
+            </div>
+
             
             <!-- Controles de faixa -->
             <div class="range-control">
                 <label for="volume">Volume</label>
                 <input type="range" id="volume-control" min="0" max="1" step="0.01" value="1" />
 
-                <label for="corbody">BackGround:</label>
+                <label for="corbody">Cor 1</label>
                 <input type="range" id="corbody" name="corbody" min="0" max="100" value="50" step="1">
 
-                <label for="cormpc">Cor Mpc:</label>
+                <label for="cormpc">Cor 2</label>
                 <input type="range" id="cormpc" name="cormpc" min="0" max="100" value="50" step="1">
             </div>
+
+            
         </div>
     </div>
 
@@ -82,6 +102,6 @@
     <audio id="sound15" src="som15.mp3"></audio>
     <audio id="sound16" src="som16.mp3"></audio>
 
-    <script src="script.js"></script>
+
 </body>
 </html>
